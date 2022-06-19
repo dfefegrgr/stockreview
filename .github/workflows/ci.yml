@@ -1,0 +1,24 @@
+name: Deploy to Blog
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 登录到服务器拉取代码
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            su www
+            cd /www/vue_web/stockreview
+            git pull origin master
+            exit
+            exit
+          host: ${{ secrets.DEPLOY_HOST }}
+          user: root
+          port: 2468
+          pass: ${{ secrets.DEPLOY_PASSWORD }}
+          args: "-tt"
