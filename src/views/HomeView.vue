@@ -111,7 +111,7 @@ export default {
 
       option = {
         title: {
-          text: "代码："+this.code + "  名称：" + this.name.name,
+          text: "代码："+this.code + "   名称：" + this.name.name +"   日期："+this.end,
           left: 0
         },
         tooltip: {
